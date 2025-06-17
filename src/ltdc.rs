@@ -363,7 +363,7 @@ impl<T: 'static + SupportedWord> DisplayController<T> {
         layer: Layer,
         buffer: &'static mut [T],
         pixel_format: PixelFormat,
-    ) {
+    ) -> Option<&'static mut [T]> {
         let _layer = self._ltdc.layer(layer as usize);
 
         let height = self.config.active_height;
@@ -462,8 +462,8 @@ impl<T: 'static + SupportedWord> DisplayController<T> {
         });
 
         match &layer {
-            Layer::L1 => self.buffer1 = Some(buffer),
-            Layer::L2 => self.buffer2 = Some(buffer),
+            Layer::L1 => self.buffer1.replace(buffer),
+            Layer::L2 => self.buffer2.replace(buffer),
         }
     }
 
