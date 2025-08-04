@@ -6,7 +6,7 @@
 use micromath::F32Ext;
 
 use crate::{
-    gpio::{alt::ltdc as alt, PinSpeed, Speed},
+    gpio::alt::ltdc as alt,
     pac::{DMA2D, LTDC, RCC},
     rcc::{Enable, Reset},
 };
@@ -92,14 +92,14 @@ impl RedPins {
         r7: impl Into<alt::R7>,
     ) -> Self {
         Self {
-            r0: r0.into().speed(Speed::VeryHigh),
-            r1: r1.into().speed(Speed::VeryHigh),
-            r2: r2.into().speed(Speed::VeryHigh),
-            r3: r3.into().speed(Speed::VeryHigh),
-            r4: r4.into().speed(Speed::VeryHigh),
-            r5: r5.into().speed(Speed::VeryHigh),
-            r6: r6.into().speed(Speed::VeryHigh),
-            r7: r7.into().speed(Speed::VeryHigh),
+            r0: r0.into(),
+            r1: r1.into(),
+            r2: r2.into(),
+            r3: r3.into(),
+            r4: r4.into(),
+            r5: r5.into(),
+            r6: r6.into(),
+            r7: r7.into(),
         }
     }
 }
@@ -118,14 +118,14 @@ impl GreenPins {
         g7: impl Into<alt::G7>,
     ) -> Self {
         Self {
-            g0: g0.into().speed(Speed::VeryHigh),
-            g1: g1.into().speed(Speed::VeryHigh),
-            g2: g2.into().speed(Speed::VeryHigh),
-            g3: g3.into().speed(Speed::VeryHigh),
-            g4: g4.into().speed(Speed::VeryHigh),
-            g5: g5.into().speed(Speed::VeryHigh),
-            g6: g6.into().speed(Speed::VeryHigh),
-            g7: g7.into().speed(Speed::VeryHigh),
+            g0: g0.into(),
+            g1: g1.into(),
+            g2: g2.into(),
+            g3: g3.into(),
+            g4: g4.into(),
+            g5: g5.into(),
+            g6: g6.into(),
+            g7: g7.into(),
         }
     }
 }
@@ -144,14 +144,14 @@ impl BluePins {
         b7: impl Into<alt::B7>,
     ) -> Self {
         Self {
-            b0: b0.into().speed(Speed::VeryHigh),
-            b1: b1.into().speed(Speed::VeryHigh),
-            b2: b2.into().speed(Speed::VeryHigh),
-            b3: b3.into().speed(Speed::VeryHigh),
-            b4: b4.into().speed(Speed::VeryHigh),
-            b5: b5.into().speed(Speed::VeryHigh),
-            b6: b6.into().speed(Speed::VeryHigh),
-            b7: b7.into().speed(Speed::VeryHigh),
+            b0: b0.into(),
+            b1: b1.into(),
+            b2: b2.into(),
+            b3: b3.into(),
+            b4: b4.into(),
+            b5: b5.into(),
+            b6: b6.into(),
+            b7: b7.into(),
         }
     }
 }
@@ -182,10 +182,10 @@ impl LtdcPins {
             r,
             g,
             b,
-            hsync: hsync.into().speed(Speed::VeryHigh),
-            vsync: vsync.into().speed(Speed::VeryHigh),
-            de: de.into().speed(Speed::VeryHigh),
-            clk: clk.into().speed(Speed::VeryHigh),
+            hsync: hsync.into(),
+            vsync: vsync.into(),
+            de: de.into(),
+            clk: clk.into(),
         }
     }
 }
