@@ -475,6 +475,20 @@ impl<T: 'static + SupportedWord> DisplayController<T> {
             .modify(|_, w| w.len().set_bit());
     }
 
+    /// Disable the layer and return its buffer
+    pub fn disable_layer(&mut self, layer: Layer) -> Option<&'static mut [T]> {
+        self._ltdc
+            .layer(layer as usize)
+            .cfbar()
+            .write(|w| w.cfbadd().set(0));
+        self._ltdc
+            .layer(layer as usize)
+            .cr()
+            .modify(|_, w| w.len().clear_bit());
+
+        self.buffer1.take()
+    }
+
     /// Draw a pixel at position (x,y) on the given layer
     pub fn draw_pixel(&mut self, layer: Layer, x: usize, y: usize, color: T) {
         if x >= self.config.active_width as usize || y >= self.config.active_height as usize {
